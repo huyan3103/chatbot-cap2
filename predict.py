@@ -7,12 +7,11 @@ import pickle
 from text_preprocess import text_preprocess
 from db_connect import get_collection
 
-
-logistic_model = pickle.load(open('logistic_model.pkl', 'rb'))
-svm_model = pickle.load(open('svm_model.pkl', 'rb'))
-answer = pickle.load(open('answer.pkl', 'rb'))
     
 def get_answer(question):
+    logistic_model = pickle.load(open('logistic_model.pkl', 'rb'))
+    svm_model = pickle.load(open('svm_model.pkl', 'rb'))
+    answer = pickle.load(open('answer.pkl', 'rb'))
     data_answer = pd.DataFrame(answer)
     df_question = pd.DataFrame([{"Question": (text_preprocess(question))}])
     logistic_predict = logistic_model.predict(df_question["Question"])

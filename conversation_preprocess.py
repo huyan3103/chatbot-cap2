@@ -46,8 +46,10 @@ def conversration_predict(conversations):
     try:
         for data in conversations:
             preprocess_sentence(data['user'], data['expert'])
+        print("Conversation successful")
         return {"mess": "Done"}
     except Exception as e:
+        print("Conversation fail")
         return {"mess": e}
 # fake_data = [{"user": ['quên mật khẩu, mất mật khẩu', 'không nhớ mật khẩu'], 'expert': ['lên phòng cse tầng 7 Quang Trung', 'cầm theo thẻ sinh viên', 'nhập mail cá nhân ở myDtu']}, {"expert": ["mình không hiểu bạn nói gì", "ádasdasd"], "user": ["asdasdasdasdasd", "ádasdasdasd"]}]
 # conversration_predict(fake_data)

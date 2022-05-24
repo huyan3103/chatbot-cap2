@@ -9,6 +9,7 @@ import pandas as pd
 import pickle
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+
 class LogisticRegression_Model(object):
     def __init__(self):
         self.clf = self._init_pipeline()
