@@ -1,11 +1,11 @@
-GET  http://127.0.0.1:8000/train
+GET  http://192.168.5.211:8080/
 Content-Type: application/json
 ################################
 POST  http://192.168.5.211:8080/predict-conversation
 Content-Type: application/json
 
 {
-    "conversations": [{ "user": ["asdasd","asdasdads"],"expert":["asdasd","asdasd"]},{ "user": ["asdasd","asdasdads"],"expert":["asdasd","asdasd"]},{ "user": ["asdasd","asdasdads"],"expert":["asdasd","asdasd"]}]
+    "conversations": [{ "user": ["asdassadasdasd","asdasdads"],"expert":["asdasd","asdasd"]},{ "user": ["asdasd","asdasdads"],"expert":["asdasd","asdasd"]},{ "user": ["asdasd","asdasdads"],"expert":["asdasd","asdasd"]}]
 }
 #######################
 GET https://chatbot-capstone1.herokuapp.com/train
@@ -15,5 +15,5 @@ POST http://192.168.5.211:8080/
 Content-Type: application/json
 
 {
-    "test": [{"expert":"quên mật khẩu"}]
+    "question": "quên mật khẩu"
 }
