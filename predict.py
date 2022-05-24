@@ -49,7 +49,7 @@ def get_answer(question):
             if(logistic_predict == svm_predict):
                 threading.Thread(target=insert_lowProb_question, args=[question,maxLogisticPredictProb, logistic_predict_str]).start()        
             else:
-                threading.Thread(target=insert_lowProb_question, args=[question,maxLogisticPredictProb, ""]).start()
+                threading.Thread(target=insert_lowProb_question, args=[question,maxLogisticPredictProb, "New Tag"]).start()
         return {"mess": confused_answer.iat[0][math.trunc(random.random()*len(confused_answer.iat[0]))]}
     except ValueError:
         print(ValueError)
