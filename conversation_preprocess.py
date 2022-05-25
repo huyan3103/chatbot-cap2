@@ -29,18 +29,37 @@ def remove_unmeaning(sentence):
     predict_prob = (np.ndarray.max(logistic_answer_model.predict_proba(df_sentence["Sentence"])))
     return predict_prob
 
+def remove_user_unmeaning (sentence):
+    df_sentence = pd.DataFrame([{"Sentence": text_preprocess(sentence)}])
+    logistic_model = pickle.load(open('logistic_model.pkl', 'rb'))
+    predict = logistic_model.predict(df_sentence['Sentence'])
+    predict_string = predict.tolist()[0]
+    print(predict_string)
+    return predict_string
+
 def preprocess_sentence (user, expert):
   sentence_preprocessed = []
+  user_sentence = []
   for sentence in expert:
     sentenceTemp = text_preprocess(sentence)
     prob = remove_unmeaning(sentenceTemp)
     if(prob > 0.1):
         sentence_preprocessed.append(sentenceTemp)
+  for sentence in user:
+    sentenceTemp = text_preprocess(sentence)
+    predict = remove_user_unmeaning(sentenceTemp)
+    if(predict != 'vo_nghia'):
+        user_sentence.append(sentence)
   sentence_predict = ', '.join(sentence_preprocessed)
-  sententce_final = ', '.join(user)
+  sentence_final = ', '.join(user_sentence)
   finall_result = predict_question(sentence_predict)
   print(predict_question(sentence_predict))
-  insert_lowProb_question(sententce_final, finall_result[1], finall_result[0])
+  print(sentence_final)
+  if(finall_result):
+    print(1)
+    insert_lowProb_question(sentence_final, finall_result[1], finall_result[0])
+
+
 
 def conversration_predict(conversations):
     try:

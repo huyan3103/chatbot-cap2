@@ -1,7 +1,7 @@
-GET  http://192.168.5.211:8080/
+GET  http://localhost:8080/
 Content-Type: application/json
 ################################
-POST  http://192.168.5.211:8080/predict-conversation
+POST  http://localhost:8080/predict-conversation
 Content-Type: application/json
 
 {
